@@ -6,7 +6,7 @@
 /*   By: tmichel- <tmichel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:41:03 by tmichel-          #+#    #+#             */
-/*   Updated: 2023/02/03 18:17:32 by tmichel-         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:33:34 by tmichel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	mouse_hooks_triggers(int mousecode, int x, int y, t_window *app)
 	return (1);
 }
 
-void	hooks(t_window app)
+void	hooks(t_window *app)
 {
-	mlx_hook(app.win, 2, 1L, hooks_triggers, &app);
-	mlx_hook(app.win, 17, 0, destroy_window, &app);
-	mlx_mouse_hook(app.win, mouse_hooks_triggers, &app);
+	mlx_hook(app->win, 2, 1L, hooks_triggers, app);
+	mlx_hook(app->win, 17, 0, destroy_window, app);
+	mlx_mouse_hook(app->win, mouse_hooks_triggers, app);
 }

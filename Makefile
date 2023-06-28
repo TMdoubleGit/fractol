@@ -34,7 +34,7 @@ MLXFLAGS = -I . -lXext -lX11 -lm
 
 ${NAME}: ${OBJS}
 	@cd ${DIRLIB} && ${MAKE}
-	@${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} -L./libft -lft -L./mlx_linux -lmlx
+	@${CC} ${CFLAGS} ${MLXFLAGS} -o ${NAME} ${OBJS} -L ./libft -lft -L ./mlx_linux -lmlx -lXext -lX11 -lm -lbsd
 	@echo "✅ fractol has been created"
 
 all: ${NAME}

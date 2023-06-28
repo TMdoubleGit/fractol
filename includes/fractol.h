@@ -6,7 +6,7 @@
 /*   By: tmichel- <tmichel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:06:54 by tmichel-          #+#    #+#             */
-/*   Updated: 2023/02/09 11:25:01 by tmichel-         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:33:37 by tmichel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ t_complex	get_complex_plane(t_window app, int x, int y);
 void		panning_events(int keycode, t_window *app);
 int			hooks_triggers(int keycode, t_window *app);
 int			mouse_hooks_triggers(int mousecode, int x, int y, t_window *app);
-void		hooks(t_window app);
+void		hooks(t_window *app);
 //IMAGE.C
-t_image		init_img(void *mlx);
+t_image		*init_img(void *mlx);
 void		pixel_put(t_image *img, int x, int y, int color);
 int			select_fractal(t_window app, t_complex z);
 void		img_to_win(t_window *app);

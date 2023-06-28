@@ -6,7 +6,7 @@
 /*   By: tmichel- <tmichel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:25:22 by tmichel-          #+#    #+#             */
-/*   Updated: 2023/02/03 18:27:15 by tmichel-         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:33:46 by tmichel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 		|| !ft_strncmp(av[1], "Burningship", 12))
 	{
 		parse_args(&app, ac, av);
-		hooks(app);
+		hooks(&app);
 		img_to_win(&app);
 		mlx_loop(app.mlx);
 	}

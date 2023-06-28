@@ -6,21 +6,24 @@
 /*   By: tmichel- <tmichel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:50:05 by tmichel-          #+#    #+#             */
-/*   Updated: 2023/02/06 12:28:54 by tmichel-         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:28:21 by tmichel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_image	init_img(void *mlx)
+t_image	*init_img(void *mlx)
 {
-	t_image	img;
+	t_image	*img;
 
-	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if (!img.img)
-		return ((t_image){});
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
+	img = malloc(sizeof(t_image));
+	if (!img)
+		return ((t_image *)0);
+	img->img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	if (!img->img)
+		return ((t_image *)0);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
+			&img->endian);
 	return (img);
 }
 
@@ -45,7 +48,7 @@ int	select_fractal(t_window app, t_complex z)
 
 void	img_to_win(t_window *app)
 {
-	t_image		img;
+	t_image		*img;
 	t_complex	z;
 	int			it;
 	int			x;
@@ -61,12 +64,12 @@ void	img_to_win(t_window *app)
 			z = get_complex_plane(*app, x, y);
 			it = select_fractal(*app, z);
 			if (it)
-				pixel_put(&img, x, y, get_colors(it, app->max_it, app->color));
+				pixel_put(img, x, y, get_colors(it, app->max_it, app->color));
 			y++;
 		}
 		x++;
 	}
-	mlx_put_image_to_window(app->mlx, app->win, img.img, app->offset_x,
+	mlx_put_image_to_window(app->mlx, app->win, img->img, app->offset_x,
 		app->offset_y);
-	mlx_destroy_image(app->mlx, img.img);
+	mlx_destroy_image(app->mlx, img->img);
 }
