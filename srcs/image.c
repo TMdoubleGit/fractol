@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmichel- <tmichel-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tmichel- <tmichel-@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:50:05 by tmichel-          #+#    #+#             */
-/*   Updated: 2023/06/28 20:28:21 by tmichel-         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:30:59 by tmichel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	img_to_win(t_window *app)
 	mlx_put_image_to_window(app->mlx, app->win, img->img, app->offset_x,
 		app->offset_y);
 	mlx_destroy_image(app->mlx, img->img);
+	free(img);
 }
